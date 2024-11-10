@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 
 import Dashboard from "./Dashboard/Dashboard";
 import About from "./About/About";
@@ -6,7 +6,6 @@ import AppRoot from "./AppRoot";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <AppRoot />,
     children: [
       {
@@ -18,6 +17,10 @@ const router = createBrowserRouter([
         element: <About />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <Navigate to="/dashboard" />,
   },
 ]);
 
