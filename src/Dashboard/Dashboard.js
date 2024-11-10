@@ -12,9 +12,11 @@ const Dashboard = () => {
     setShowDrawer(false);
   };
 
-  const handleDateSelect = (date) => {
-    setShowDrawer(true);
-    setSelectedDate(date);
+  const handleDateSelect = (date, info) => {
+    if (info.source === "date") {
+      setShowDrawer(true);
+      setSelectedDate(date);
+    }
   };
 
   return (
