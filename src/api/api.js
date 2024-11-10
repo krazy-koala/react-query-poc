@@ -4,14 +4,14 @@ const TODOS = {
     title: "Sleep",
     description: "Sleep for 12 hours",
     createdAt: Date.now(),
-    type: "saved"
+    type: "saved",
   },
   2: {
     id: 2,
     title: "Eat",
     description: "Eat for 12 hours",
     createdAt: Date.now(),
-    type: "saved"
+    type: "saved",
   },
 };
 
@@ -59,4 +59,13 @@ const updateTodo = (id, title, description) => {
   });
 };
 
-export { fetchTodos, createUnsavedTodo, saveTodo, updateTodo };
+const deleteTodo = (todoToDelete) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      delete TODOS[todoToDelete.id];
+      resolve(todoToDelete);
+    }, 1000);
+  });
+};
+
+export { fetchTodos, createUnsavedTodo, saveTodo, updateTodo, deleteTodo };
