@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Drawer } from "antd";
+import { Drawer, Flex } from "antd";
 
 import Calendar from "../components/Calendar/Calendar";
 import TodoList from "../components/TodoList/TodoList";
+import FilterDropdown from "../components/FilterBar/FilterDropdown";
 
 const Dashboard = () => {
   const [showDrawer, setShowDrawer] = useState();
@@ -20,7 +21,7 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <Flex vertical gap="middle">
       <Drawer
         title="Todos"
         placement="bottom"
@@ -32,8 +33,11 @@ const Dashboard = () => {
       >
         <TodoList date={selectedDate} />
       </Drawer>
+      <Flex justify="right" style={{ paddingLeft: 28, paddingRight: 28 }}>
+        <FilterDropdown />
+      </Flex>
       <Calendar onSelect={handleDateSelect} />
-    </>
+    </Flex>
   );
 };
 
