@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer, Flex } from "antd";
+import { Drawer, Flex, Tabs } from "antd";
 
 import Calendar from "../components/Calendar/Calendar";
 import TodoList from "../components/TodoList/TodoList";
@@ -20,6 +20,19 @@ const Dashboard = () => {
     }
   };
 
+  const viewModeTabs = [
+    {
+      key: "calendar",
+      label: "Calendar",
+      children: <Calendar onSelect={handleDateSelect} />,
+    },
+    {
+      key: "listView",
+      label: "List View",
+      children: "List View",
+    },
+  ];
+
   return (
     <Flex vertical gap="middle">
       <Drawer
@@ -33,10 +46,11 @@ const Dashboard = () => {
       >
         <TodoList date={selectedDate} />
       </Drawer>
-      <Flex justify="right" style={{ paddingLeft: 28, paddingRight: 28 }}>
-        <FilterDropdown />
-      </Flex>
-      <Calendar onSelect={handleDateSelect} />
+      <Tabs
+        defaultActiveKey="calendar"
+        items={viewModeTabs}
+        tabBarExtraContent={<FilterDropdown />}
+      />
     </Flex>
   );
 };
